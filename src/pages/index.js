@@ -6,6 +6,7 @@ import Image from "../components/image"
 import SEO from "../components/seo"
 import Logo from '../images/logo.jpg'
 import Listen from '../images/listen.jpg'
+import Audio from '../audio/recording.mp3'
 
 const IndexPage = () => {
   const logoRef = createRef(null)
@@ -83,7 +84,7 @@ const IndexPage = () => {
   return (
     <Layout>
       <audio id="myAudio" ref={audioRef}>
-        <source src="recording.mp3" type="audio/mpeg" />
+        <source src={Audio} type="audio/mpeg" />
         Your browser does not support the audio element.
       </audio>
 
