@@ -11,45 +11,82 @@ const IndexPage = () => {
   const logoRef = createRef(null)
   const textRef = createRef(null)
   const mainRef = createRef(null)
-  const listenImgRef = createRef(null)
+  const imgRef = createRef(null)
+  const audioRef = createRef(null)
 
   const [page, setPage] = useState(null)
-  const [playing, setPlaying] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
+  const [isPlaying, setIsPlaying] = useState(false)
 
-  const changePage = (pageId) => {
+  const changePage = pageId => {
     setPage(pageId)
 
-    if (pageId === 'listen') {
-      setPlaying(!playing)
+    if (pageId === 'listen' && isPlaying) {
+      setIsPlaying(false)
+      audioRef.current.pause()
+      logoRef.current.style.transition = 'transform 1s ease-in-out 1s'
+      logoRef.current.style.transform = 'translateY(0)'
 
-      listenImgRef.current.style.transition = 'opacity 1.25s ease-in-out'
-      listenImgRef.current.style.opacity = 0
+      textRef.current.style.transition = 'opacity 1s ease-in-out'
+      textRef.current.style.opacity = 0
+    } else if (pageId === 'listen') {
+      setIsPlaying(true)
+      audioRef.current.play()
+      logoRef.current.style.transition = 'transform 1s ease-in-out'
+      logoRef.current.style.transform = 'translateY(10rem)'
+
+      textRef.current.style.transition = 'opacity 1s ease-in-out 1s'
+      textRef.current.style.opacity = 1
+    } else {
+      logoRef.current.style.transition = 'transform 1s ease-in-out'
+      logoRef.current.style.transform = 'translateY(10rem)'
+
+      textRef.current.style.transition = 'opacity 1s ease-in-out 1s'
+      textRef.current.style.opacity = 1
     }
-
-    logoRef.current.style.transform = !playing ? 'translateY(10rem)' : 'translateY(0)'
-    logoRef.current.style.transition = 'transform 1s ease-in-out'
-
-    textRef.current.style.transition = 'opacity 1.25s ease-in-out 1s'
-    textRef.current.style.opacity = 1
   }
 
-  const isPlaying = () => {
-    console.log('IS PLAYING FFS')
-  }
+  const Image = () => (
+    <img ref={imgRef} src={Listen} alt="listen" style={{
+      position: 'absolute',
+      top: '-6.25rem',
+      transform: 'scale(.75) translateX(-5px)',
+      left: 0,
+      transition: 'opacity 1s ease-in-out',
+    }} />
+  )
 
   const content = {
     about: 'Migrant Recordings field recording studio.',
     contact: 'mail@migrant.audio',
-    listen: null
+    listen: <Image />
   }
 
   useEffect(() => {
-    mainRef.current.style.transition = 'opacity 1s ease-in-out 1s'
+    mainRef.current.style.transition = 'opacity 1s ease-in-out .5s'
     mainRef.current.style.opacity = 1
   }, [])
 
+  const NavBtn = ({ page }) => (
+    <div style={{
+        color: 'black',
+        textDecoration: 'none',
+        minWidth: '200px',
+        textAlign: 'center'
+      }}
+      onClick={() => changePage(page)}
+    >
+      {page === 'listen' ? (isPlaying ? 'pause' : 'listen') : page}
+    </div>
+  )
+
   return (
     <Layout>
+      <audio id="myAudio" ref={audioRef}>
+        <source src="recording.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+
       <main ref={mainRef} style={{ marginTop: '12rem', position: 'relative', opacity: 0 }}>
         <nav style={{
           maxWidth: '100%',
@@ -68,37 +105,9 @@ const IndexPage = () => {
           cursor: 'pointer',
           userSelect: 'none',
         }}>
-          <div style={{
-              color: 'black',
-              textDecoration: 'none',
-              minWidth: '200px',
-              textAlign: 'center'
-            }}
-            onClick={() => changePage('about')
-          }>
-            about
-          </div>
-          <div style={{
-              color: 'black',
-              textDecoration: 'none',
-              minWidth: '200px',
-              textAlign: 'center'
-            }}
-            onClick={() => changePage('contact')
-          }>
-            contact
-          </div>
-          <div style={{
-              color: 'black',
-              textDecoration: 'none',
-              minWidth: '200px',
-              textAlign: 'center'
-            }}
-            onClick={() => {
-              changePage('listen'); isPlaying()}
-            }>
-            {playing ? 'pause' : 'listen'}
-          </div>
+          <NavBtn page="about" />
+          <NavBtn page="contact" />
+          <NavBtn page="listen" />
         </nav>
 
         <h2 ref={textRef} style={{
@@ -113,33 +122,23 @@ const IndexPage = () => {
           fontSize: '1.5rem',
           color: 'black',
           fontFamily: 'Kefa',
+          lineHeight: 1.5,
           opacity: 0,
-          lineHeight: 1.5
+          transition: 'opacity 1s ease-in-out 1s'
         }}>
           {content[page]}
-
-          <img ref={listenImgRef} src={Listen} alt="listen" style={{
-            position: 'absolute',
-            top: '-6.25rem',
-            transform: 'scale(.75) translateX(-5px)',
-            left: 0,
-            transition: 'opacity 1s ease-in-out',
-            opacity: playing ? 1 : 0
-          }} />
-          {/* {page === 'listen' ? null : content[page]} */}
         </h2>
 
         <img ref={logoRef} src={Logo} alt="" style={{
           position: 'relative',
           marginLeft: 'auto',
           marginRight: 'auto',
+          transition: 'transform 1s ease-in-out',
           zIndex: -1
         }} />
       </main>
-      {/* <h1 style={{marginTop: '2rem', textAlign: 'center' }}>Migrant Recordings</h1> */}
     </Layout>
   )
 }
-
 
 export default IndexPage
