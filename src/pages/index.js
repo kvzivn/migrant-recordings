@@ -59,7 +59,7 @@ const IndexPage = () => {
 
   const content = {
     about: 'Migrant Recordings field recording studio.',
-    contact: 'mail@migrant.audio',
+    contact: 'migrantrecordings@protonmail.com',
     listen: <Image />
   }
 
