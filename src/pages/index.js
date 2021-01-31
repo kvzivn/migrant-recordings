@@ -1,12 +1,9 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import React, { createRef, useState, useEffect } from "react";
-import { Link } from "gatsby";
-import { useMediaQuery } from "react-responsive";
+import { createRef, useState, useEffect } from "react";
+import "../styles/styles.css";
 
 import Layout from "../components/layout";
-import Image from "../components/image";
-import SEO from "../components/seo";
 import Logo from "../images/logo2.svg";
 import Listen from "../images/listen.jpg";
 import Audio from "../audio/audio.flac";
@@ -18,12 +15,7 @@ const IndexPage = () => {
   const imgRef = createRef(null);
   const audioRef = createRef(null);
   const [page, setPage] = useState(null);
-  const [isOpen, setIsOpen] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
-
-  const isMobile = useMediaQuery({ maxWidth: 767 });
-
-  console.log(isMobile);
 
   const changePage = (pageId) => {
     setPage(pageId);
@@ -58,13 +50,10 @@ const IndexPage = () => {
       ref={imgRef}
       src={Listen}
       alt="listen"
+      className="listen-img"
       sx={{
         position: "absolute",
-        top: isMobile ? "-0.5rem" : "-5.85rem",
         width: "100%",
-        transform: isMobile
-          ? "scale(1) translateX(-5px)"
-          : "scale(.71) translateX(-5px)",
         left: 0,
         transition: "opacity 1s ease-in-out",
       }}
@@ -90,10 +79,10 @@ const IndexPage = () => {
 
   const NavBtn = ({ page }) => (
     <div
+      className="nav-btn"
       sx={{
         color: "black",
         textDecoration: "none",
-        minWidth: isMobile ? "0" : "200px",
         textAlign: "center",
       }}
       onClick={() => changePage(page)}
@@ -118,6 +107,7 @@ const IndexPage = () => {
         }}
       >
         <nav
+          className="nav"
           sx={{
             maxWidth: "100%",
             width: "770px",
@@ -125,7 +115,6 @@ const IndexPage = () => {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            fontSize: isMobile ? "4.5vw" : "2rem",
             fontWeight: "600",
             fontFamily: "Lato",
             letterSpacing: ".025em",
@@ -144,9 +133,9 @@ const IndexPage = () => {
 
         <h2
           ref={textRef}
+          className="content"
           sx={{
             position: "absolute",
-            top: isMobile ? "5.75rem" : "7rem",
             width: "100%",
             maxWidth: content[page] === "about" ? "350px" : "none",
             margin: "0 auto",
@@ -156,7 +145,6 @@ const IndexPage = () => {
             textAlign: "center",
             fontWeight: "500",
             letterSpacing: ".035em",
-            fontSize: isMobile ? "1.25rem" : "1.5rem",
             color: "black",
             fontFamily:
               "Cantarell, Helvetica Neue, system-ui, -apple-system, BlinkMacSystemFont, sans-serif",
@@ -171,12 +159,12 @@ const IndexPage = () => {
         <img
           ref={logoRef}
           src={Logo}
-          alt=""
+          alt="logo"
+          className="logo"
           sx={{
             position: "absolute",
             top: "200%",
             left: "50%",
-            width: isMobile ? "100%" : "690px",
             transform: "translateX(-50%)",
             transition: "transform 1s ease-in-out",
             zIndex: -1,
