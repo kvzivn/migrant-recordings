@@ -1,5 +1,8 @@
+/** @jsx jsx */
+import { jsx } from "theme-ui";
 import React, { createRef, useState, useEffect } from "react";
 import { Link } from "gatsby";
+import { useMediaQuery } from "react-responsive";
 
 import Layout from "../components/layout";
 import Image from "../components/image";
@@ -14,12 +17,13 @@ const IndexPage = () => {
   const mainRef = createRef(null);
   const imgRef = createRef(null);
   const audioRef = createRef(null);
-
   const [page, setPage] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
 
-  let isMobile = typeof window !== `undefined` && window.innerWidth < 600;
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+
+  console.log(isMobile);
 
   const changePage = (pageId) => {
     setPage(pageId);
@@ -54,9 +58,9 @@ const IndexPage = () => {
       ref={imgRef}
       src={Listen}
       alt="listen"
-      style={{
+      sx={{
         position: "absolute",
-        top: isMobile ? "-0.5rem" : "-6.85rem",
+        top: isMobile ? "-0.5rem" : "-5.85rem",
         width: "100%",
         transform: isMobile
           ? "scale(1) translateX(-5px)"
@@ -68,7 +72,13 @@ const IndexPage = () => {
   );
 
   const content = {
-    about: "Migrant Recordings field recording studio.",
+    about: (
+      <div
+        dangerouslySetInnerHTML={{
+          __html: "Migrant Recordings<br />Migrating recording studio.",
+        }}
+      />
+    ),
     contact: "mail@migrantrecordings.com",
     listen: <Image />,
   };
@@ -80,7 +90,7 @@ const IndexPage = () => {
 
   const NavBtn = ({ page }) => (
     <div
-      style={{
+      sx={{
         color: "black",
         textDecoration: "none",
         minWidth: isMobile ? "0" : "200px",
@@ -101,14 +111,14 @@ const IndexPage = () => {
 
       <main
         ref={mainRef}
-        style={{
+        sx={{
           marginTop: "12rem",
           position: "relative",
           opacity: 0,
         }}
       >
         <nav
-          style={{
+          sx={{
             maxWidth: "100%",
             width: "770px",
             margin: "0 auto",
@@ -134,11 +144,14 @@ const IndexPage = () => {
 
         <h2
           ref={textRef}
-          style={{
+          sx={{
             position: "absolute",
-            top: isMobile ? "5.75rem" : "8rem",
+            top: isMobile ? "5.75rem" : "7rem",
             width: "100%",
+            maxWidth: content[page] === "about" ? "350px" : "none",
             margin: "0 auto",
+            left: "50%",
+            transform: "translateX(-50%)",
             display: "block",
             textAlign: "center",
             fontWeight: "500",
@@ -159,7 +172,7 @@ const IndexPage = () => {
           ref={logoRef}
           src={Logo}
           alt=""
-          style={{
+          sx={{
             position: "absolute",
             top: "200%",
             left: "50%",
