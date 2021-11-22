@@ -6,7 +6,7 @@ import "../styles/styles.css";
 import Layout from "../components/layout";
 import Logo from "../images/logo2.svg";
 import Listen from "../images/listen.jpg";
-import Audio from "../audio/audio.flac";
+import Audio from "../audio/audio.mp3";
 
 const IndexPage = () => {
   const logoRef = createRef(null);
