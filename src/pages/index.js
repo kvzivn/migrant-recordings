@@ -1,49 +1,49 @@
 /** @jsx jsx */
-import { jsx } from "theme-ui";
-import { createRef, useState, useEffect } from "react";
-import "../styles/styles.css";
+import { jsx } from "theme-ui"
+import { createRef, useState, useEffect } from "react"
+import "../styles/styles.css"
 
-import Layout from "../components/layout";
-import Logo from "../images/logo2.svg";
-import Listen from "../images/listen.jpg";
-import Audio from "../audio.mp3";
+import Layout from "../components/layout"
+import Logo from "../images/logo2.svg"
+import Listen from "../images/listen.jpg"
+import Audio from "../audio/audio.flac"
 
 const IndexPage = () => {
-  const logoRef = createRef(null);
-  const textRef = createRef(null);
-  const mainRef = createRef(null);
-  const imgRef = createRef(null);
-  const audioRef = createRef(null);
-  const [page, setPage] = useState(null);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const logoRef = createRef(null)
+  const textRef = createRef(null)
+  const mainRef = createRef(null)
+  const imgRef = createRef(null)
+  const audioRef = createRef(null)
+  const [page, setPage] = useState(null)
+  const [isPlaying, setIsPlaying] = useState(false)
 
   const changePage = (pageId) => {
-    setPage(pageId);
+    setPage(pageId)
 
     if (pageId === "listen" && isPlaying) {
-      setIsPlaying(false);
-      audioRef.current.pause();
-      logoRef.current.style.transition = "transform 1s ease-in-out 1s";
-      logoRef.current.style.transform = "translate(-50%, 0)";
+      setIsPlaying(false)
+      audioRef.current.pause()
+      logoRef.current.style.transition = "transform 1s ease-in-out 1s"
+      logoRef.current.style.transform = "translate(-50%, 0)"
 
-      textRef.current.style.transition = "opacity 1s ease-in-out";
-      textRef.current.style.opacity = 0;
+      textRef.current.style.transition = "opacity 1s ease-in-out"
+      textRef.current.style.opacity = 0
     } else if (pageId === "listen") {
-      setIsPlaying(true);
-      audioRef.current.play();
-      logoRef.current.style.transition = "transform 1s ease-in-out";
-      logoRef.current.style.transform = "translate(-50%, 12rem)";
+      setIsPlaying(true)
+      audioRef.current.play()
+      logoRef.current.style.transition = "transform 1s ease-in-out"
+      logoRef.current.style.transform = "translate(-50%, 12rem)"
 
-      textRef.current.style.transition = "opacity 1s ease-in-out 1s";
-      textRef.current.style.opacity = 1;
+      textRef.current.style.transition = "opacity 1s ease-in-out 1s"
+      textRef.current.style.opacity = 1
     } else {
-      logoRef.current.style.transition = "transform 1s ease-in-out";
-      logoRef.current.style.transform = "translate(-50%, 12rem)";
+      logoRef.current.style.transition = "transform 1s ease-in-out"
+      logoRef.current.style.transform = "translate(-50%, 12rem)"
 
-      textRef.current.style.transition = "opacity 1s ease-in-out 1s";
-      textRef.current.style.opacity = 1;
+      textRef.current.style.transition = "opacity 1s ease-in-out 1s"
+      textRef.current.style.opacity = 1
     }
-  };
+  }
 
   const Image = () => (
     <img
@@ -58,7 +58,7 @@ const IndexPage = () => {
         transition: "opacity 1s ease-in-out",
       }}
     />
-  );
+  )
 
   const content = {
     about: (
@@ -70,12 +70,12 @@ const IndexPage = () => {
     ),
     contact: "mail@migrantrecordings.com",
     listen: <Image />,
-  };
+  }
 
   useEffect(() => {
-    mainRef.current.style.transition = "opacity 1s ease-in-out .5s";
-    mainRef.current.style.opacity = 1;
-  }, []);
+    mainRef.current.style.transition = "opacity 1s ease-in-out .5s"
+    mainRef.current.style.opacity = 1
+  }, [])
 
   const NavBtn = ({ page }) => (
     <div
@@ -89,7 +89,7 @@ const IndexPage = () => {
     >
       {page === "listen" ? (isPlaying ? "pause" : "listen") : page}
     </div>
-  );
+  )
 
   return (
     <Layout>
@@ -173,7 +173,7 @@ const IndexPage = () => {
         />
       </main>
     </Layout>
-  );
-};
+  )
+}
 
-export default IndexPage;
+export default IndexPage
