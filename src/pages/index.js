@@ -64,7 +64,7 @@ const IndexPage = () => {
     about: (
       <div
         dangerouslySetInnerHTML={{
-          __html: "Migrant Recordings<br />Migrating recording studio.",
+          __html: "Migrant Recordings<br />A migrating recording studio focusing on recording single take music at any location.",
         }}
       />
     ),
