@@ -4,25 +4,46 @@ import { createRef, useState, useEffect } from "react"
 import "../styles/styles.css"
 
 import Layout from "../components/layout"
+import AudioSlider from "../components/AudioSlider"
 import Logo from "../images/logo2.svg"
-import Listen from "../images/listen.jpg"
-import Audio from "../audio/about.mp3"
+import Audio1 from "../audio/audio1.flac"
+import Audio2 from "../audio/audio2.flac"
+import Audio3 from "../audio/audio3.flac"
+import Audio4 from "../audio/audio4.flac"
+import Audio5 from "../audio/audio5.flac"
+import Audio6 from "../audio/audio6.flac"
 
 const IndexPage = () => {
   const logoRef = createRef(null)
   const textRef = createRef(null)
   const mainRef = createRef(null)
-  const imgRef = createRef(null)
-  const audioRef = createRef(null)
+
+  const audioRef1 = createRef(null)
+  const audioRef2 = createRef(null)
+  const audioRef3 = createRef(null)
+  const audioRef4 = createRef(null)
+  const audioRef5 = createRef(null)
+  const audioRef6 = createRef(null)
+
   const [page, setPage] = useState(null)
   const [isPlaying, setIsPlaying] = useState(false)
+  const [slide, setSlide] = useState(0)
+
+  const audioRefs = [
+    audioRef1,
+    audioRef2,
+    audioRef3,
+    audioRef4,
+    audioRef5,
+    audioRef6,
+  ]
 
   const changePage = (pageId) => {
     setPage(pageId)
 
     if (pageId === "listen" && isPlaying) {
       setIsPlaying(false)
-      audioRef.current.pause()
+      audioRefs.forEach((ref) => ref.current.pause())
       logoRef.current.style.transition = "transform 1s ease-in-out 1s"
       logoRef.current.style.transform = "translate(-50%, 0)"
 
@@ -30,7 +51,7 @@ const IndexPage = () => {
       textRef.current.style.opacity = 0
     } else if (pageId === "listen") {
       setIsPlaying(true)
-      audioRef.current.play()
+      audioRefs[0].current.play()
       logoRef.current.style.transition = "transform 1s ease-in-out"
       logoRef.current.style.transform = "translate(-50%, 12rem)"
 
@@ -45,37 +66,38 @@ const IndexPage = () => {
     }
   }
 
-  const Image = () => (
-    <img
-      ref={imgRef}
-      src={Listen}
-      alt="listen"
-      className="listen-img"
+  const changeSong = (slide) => {
+    audioRefs.forEach((ref) => {
+      ref.current.pause()
+      ref.current.currentTime = 0
+    })
+    audioRefs[slide].current.play()
+  }
+
+  const Slider = () => (
+    <div
       sx={{
-        position: "absolute",
         width: "100%",
-        left: 0,
         transition: "opacity 1s ease-in-out",
       }}
-    />
+    >
+      <AudioSlider changeSong={changeSong} />
+    </div>
   )
 
   const content = {
     about: (
       <div
+        sx={{ maxWidth: "680px", margin: "0 auto" }}
         dangerouslySetInnerHTML={{
-          __html: "Migrant Recordings<br />A migrating recording studio focusing on recording single take music at any location.",
+          __html:
+            "Migrant Recordings<br />A migrating recording studio focusing on recording single take music, foley, and voiceovers at any location.",
         }}
       />
     ),
     contact: "mail@migrantrecordings.com",
-    listen: <Image />,
+    listen: <Slider />,
   }
-
-  useEffect(() => {
-    mainRef.current.style.transition = "opacity 1s ease-in-out .5s"
-    mainRef.current.style.opacity = 1
-  }, [])
 
   const NavBtn = ({ page }) => (
     <div
@@ -91,11 +113,35 @@ const IndexPage = () => {
     </div>
   )
 
+  useEffect(() => {
+    mainRef.current.style.transition = "opacity 1s ease-in-out .5s"
+    mainRef.current.style.opacity = 1
+  }, [])
+
   return (
     <Layout>
-      <audio id="myAudio" ref={audioRef}>
-        <source src={Audio} type="audio/flac" />
-        Your browser does not support the audio element.
+      <audio ref={audioRef1}>
+        <source src={Audio1} type="audio/flac" />
+      </audio>
+
+      <audio ref={audioRef2}>
+        <source src={Audio2} type="audio/flac" />
+      </audio>
+
+      <audio ref={audioRef3}>
+        <source src={Audio3} type="audio/flac" />
+      </audio>
+
+      <audio ref={audioRef4}>
+        <source src={Audio4} type="audio/flac" />
+      </audio>
+
+      <audio ref={audioRef5}>
+        <source src={Audio5} type="audio/flac" />
+      </audio>
+
+      <audio ref={audioRef6}>
+        <source src={Audio6} type="audio/flac" />
       </audio>
 
       <main
@@ -116,7 +162,6 @@ const IndexPage = () => {
             justifyContent: "space-between",
             alignItems: "center",
             fontWeight: "600",
-            fontFamily: "Lato",
             letterSpacing: ".025em",
             color: "black",
             textTransform: "uppercase",
@@ -168,7 +213,6 @@ const IndexPage = () => {
             transform: "translateX(-50%)",
             transition: "transform 1s ease-in-out",
             zIndex: -1,
-            color: "tomato",
           }}
         />
       </main>

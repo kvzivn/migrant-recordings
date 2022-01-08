@@ -1,19 +1,8 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { useStaticQuery, graphql } from "gatsby";
-import "../fonts/cantarell.css";
+import React from "react"
+import PropTypes from "prop-types"
+import "../fonts/cantarell.css"
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `);
-
   return (
     <>
       <div
@@ -26,11 +15,11 @@ const Layout = ({ children }) => {
         <main>{children}</main>
       </div>
     </>
-  );
-};
+  )
+}
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-};
+}
 
-export default Layout;
+export default Layout
