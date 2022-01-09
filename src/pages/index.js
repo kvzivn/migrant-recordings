@@ -6,8 +6,9 @@ import "../styles/styles.css"
 import Layout from "../components/layout"
 import AudioSlider from "../components/AudioSlider"
 import Logo from "../images/logo2.svg"
-import Audio1 from "../audio/audio1.flac"
-import Audio2 from "../audio/audio2.flac"
+import Audio1 from "../audio/beat.mp3"
+// import Audio1 from "../audio/audio1.flac"
+import Audio2 from "../audio/audio1.flac"
 import Audio3 from "../audio/audio3.flac"
 import Audio4 from "../audio/audio4.flac"
 import Audio5 from "../audio/audio5.flac"
@@ -27,7 +28,6 @@ const IndexPage = () => {
 
   const [page, setPage] = useState(null)
   const [isPlaying, setIsPlaying] = useState(false)
-  const [slide, setSlide] = useState(0)
 
   const audioRefs = [
     audioRef1,
@@ -121,8 +121,12 @@ const IndexPage = () => {
   return (
     <Layout>
       <audio ref={audioRef1}>
-        <source src={Audio1} type="audio/flac" />
+        <source src={Audio1} type="audio/mpeg" />
       </audio>
+
+      {/* <audio ref={audioRef1}>
+        <source src={Audio1} type="audio/flac" />
+      </audio> */}
 
       <audio ref={audioRef2}>
         <source src={Audio2} type="audio/flac" />
