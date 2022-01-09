@@ -8,11 +8,11 @@ import AudioSlider from "../components/AudioSlider"
 import Logo from "../images/logo2.svg"
 import Audio1 from "../audio/beat.mp3"
 // import Audio1 from "../audio/audio1.flac"
-import Audio2 from "../audio/audio1.flac"
-import Audio3 from "../audio/audio3.flac"
-import Audio4 from "../audio/audio4.flac"
-import Audio5 from "../audio/audio5.flac"
-import Audio6 from "../audio/audio6.flac"
+import Audio2 from "../audio/audio-1.flac"
+import Audio3 from "../audio/audio-3.flac"
+import Audio4 from "../audio/audio-4.flac"
+import Audio5 from "../audio/audio-5.flac"
+import Audio6 from "../audio/audio-6.flac"
 
 const IndexPage = () => {
   const logoRef = createRef(null)
