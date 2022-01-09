@@ -60,10 +60,10 @@
   }
 
   .prev-button {
-    left: 0;
+    left: 74px;
   }
 
   .next-button {
-    right: 0;
+    right: 80px;
   }
 }
