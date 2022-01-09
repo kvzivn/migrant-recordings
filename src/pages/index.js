@@ -94,7 +94,13 @@ const IndexPage = () => {
         }}
       />
     ),
-    contact: "mail@migrantrecordings.com",
+    contact: (
+      <div
+        dangerouslySetInnerHTML={{
+          __html: "<br />mail@migrantrecordings.com",
+        }}
+      />
+    ),
     listen: <Slider />,
   }
 
