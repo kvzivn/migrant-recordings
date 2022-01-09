@@ -6,9 +6,8 @@ import "../styles/styles.css"
 import Layout from "../components/layout"
 import AudioSlider from "../components/AudioSlider"
 import Logo from "../images/logo2.svg"
-import Audio1 from "../audio/beat.mp3"
-// import Audio1 from "../audio/audio1.flac"
-import Audio2 from "../audio/audio-1.flac"
+import Audio1 from "../audio/audio-1.flac"
+import Audio2 from "../audio/audio-2.flac"
 import Audio3 from "../audio/audio-3.flac"
 import Audio4 from "../audio/audio-4.flac"
 import Audio5 from "../audio/audio-5.flac"
@@ -121,12 +120,8 @@ const IndexPage = () => {
   return (
     <Layout>
       <audio ref={audioRef1}>
-        <source src={Audio1} type="audio/mpeg" />
-      </audio>
-
-      {/* <audio ref={audioRef1}>
         <source src={Audio1} type="audio/flac" />
-      </audio> */}
+      </audio>
 
       <audio ref={audioRef2}>
         <source src={Audio2} type="audio/flac" />
@@ -173,6 +168,7 @@ const IndexPage = () => {
               "Cantarell, Helvetica Neue, system-ui, -apple-system, BlinkMacSystemFont, sans-serif",
             cursor: "pointer",
             userSelect: "none",
+            zIndex: 2,
           }}
         >
           <NavBtn page="about" />

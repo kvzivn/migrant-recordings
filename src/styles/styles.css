@@ -13,11 +13,23 @@
 
 .content {
   top: 5.75rem;
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 .logo {
   width: 100%;
+}
+
+.song-title {
+  font-size: 1rem;
+}
+
+.prev-button {
+  left: -20px;
+}
+
+.next-button {
+  right: -20px;
 }
 
 @media only screen and (min-width: 800px) {
@@ -39,7 +51,19 @@
     font-size: 1.5rem;
   }
 
+  .song-title {
+    font-size: 1.5rem;
+  }
+
   .logo {
     width: 690px;
+  }
+
+  .prev-button {
+    left: 0;
+  }
+
+  .next-button {
+    right: 0;
   }
 }

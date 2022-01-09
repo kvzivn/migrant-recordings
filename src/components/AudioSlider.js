@@ -9,10 +9,10 @@ import "../styles/slick-theme.css"
 const Next = ({ onClick }) => (
   <button
     onClick={onClick}
+    className="next-button"
     sx={{
       position: "absolute",
       top: "50%",
-      right: 0,
       transform: "translateY(-50%)",
       zIndex: 1,
       cursor: "pointer",
@@ -26,7 +26,7 @@ const Next = ({ onClick }) => (
       viewBox="0 0 60 218"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      sx={{ width: "25%" }}
+      sx={{ width: "25%", height: "100%" }}
     >
       <path
         d="M59.1224 107.226C59.6757 108.344 59.6757 109.656 59.1224 110.774L7.58539 214.916C5.70933 218.707 0.000359058 217.372 0.000359058 213.142L0.000359058 4.85782C0.000359058 0.628002 5.70933 -0.707319 7.58539 3.08369L59.1224 107.226Z"
@@ -43,10 +43,10 @@ const Next = ({ onClick }) => (
 const Prev = ({ onClick }) => (
   <button
     onClick={onClick}
+    className="prev-button"
     sx={{
       position: "absolute",
       top: "50%",
-      left: 0,
       transform: "translateY(-50%)",
       zIndex: 1,
       cursor: "pointer",
@@ -60,7 +60,7 @@ const Prev = ({ onClick }) => (
       viewBox="0 0 60 218"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      sx={{ width: "25%" }}
+      sx={{ width: "25%", height: "100%" }}
     >
       <path
         d="M0.877969 110.774C0.324679 109.656 0.324677 108.344 0.877967 107.226L52.415 3.08371C54.291 -0.707297 60 0.628023 60 4.85784L60 213.142C60 217.372 54.291 218.707 52.415 214.916L0.877969 110.774Z"
@@ -91,22 +91,22 @@ const AudioSlider = ({ changeSong }) => {
   return (
     <Slider {...settings}>
       <div>
-        <h3>Intro</h3>
+        <h3 className="song-title">Intro</h3>
       </div>
       <div>
-        <h3>Man Gōr Lin - Farmors Brudpolska</h3>
+        <h3 className="song-title">Man Gōr Lin - Farmors Brudpolska</h3>
       </div>
       <div>
-        <h3>Trinity - The Blood Of Cu Chulainn</h3>
+        <h3 className="song-title">Trinity - The Blood Of Cu Chulainn</h3>
       </div>
       <div>
-        <h3>Man making a negroni</h3>
+        <h3 className="song-title">Man making a negroni</h3>
       </div>
       <div>
-        <h3>Svante Berg - Melting</h3>
+        <h3 className="song-title">Svante Berg - Melting</h3>
       </div>
       <div>
-        <h3>
+        <h3 className="song-title">
           <a
             sx={{
               color: "black",
