@@ -21,15 +21,15 @@
 }
 
 .song-title {
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 .prev-button {
-  left: -20px;
+  left: -30px;
 }
 
 .next-button {
-  right: -20px;
+  right: -30px;
 }
 
 @media only screen and (min-width: 800px) {
