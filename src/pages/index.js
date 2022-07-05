@@ -6,12 +6,12 @@ import "../styles/styles.css"
 import Layout from "../components/layout"
 import AudioSlider from "../components/AudioSlider"
 import Logo from "../images/logo2.svg"
-import Audio1 from "../audio/audio-1.flac"
-import Audio2 from "../audio/audio-2.flac"
+import Audio1 from "../audio/audio-1.wav"
+import Audio2 from "../audio/audio-2.wav"
 import Audio3 from "../audio/audio-3.wav"
-import Audio4 from "../audio/audio-4.flac"
-import Audio5 from "../audio/audio-5.flac"
-import Audio6 from "../audio/audio-6.flac"
+import Audio4 from "../audio/audio-4.wav"
+import Audio5 from "../audio/audio-5.wav"
+import Audio6 from "../audio/audio-6.wav"
 
 const IndexPage = () => {
   const logoRef = createRef(null)
@@ -146,27 +146,27 @@ const IndexPage = () => {
   return (
     <Layout>
       <audio ref={audioRef1}>
-        <source src={Audio1} type="audio/flac" />
+        <source src={Audio1} type="audio/wav" />
       </audio>
 
       <audio ref={audioRef2}>
-        <source src={Audio2} type="audio/flac" />
+        <source src={Audio2} type="audio/wav" />
       </audio>
 
       <audio ref={audioRef3}>
-        <source src={Audio3} type="audio/flac" />
+        <source src={Audio3} type="audio/wav" />
       </audio>
 
       <audio ref={audioRef4}>
-        <source src={Audio4} type="audio/flac" />
+        <source src={Audio4} type="audio/wav" />
       </audio>
 
       <audio ref={audioRef5}>
-        <source src={Audio5} type="audio/flac" />
+        <source src={Audio5} type="audio/wav" />
       </audio>
 
       <audio ref={audioRef6}>
-        <source src={Audio6} type="audio/flac" />
+        <source src={Audio6} type="audio/wav" />
       </audio>
 
       <main
