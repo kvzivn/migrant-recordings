@@ -103,16 +103,16 @@ const AudioSlider = ({ changeSong, slide, isPlaying }) => {
         <h3 className="song-title">Intro</h3>
       </div>
       <div>
-        <h3 className="song-title">Svante Berg - Melting</h3>
+        <h3 className="song-title">Man Gōr Lin - Farmors Brudpolska</h3>
       </div>
       <div>
-        <h3 className="song-title">Man gōr Lin - Farmors Brudpolska</h3>
+        <h3 className="song-title">Trinity - The Blood Of Cu Chulainn</h3>
       </div>
       <div>
         <h3 className="song-title">Man making a negroni</h3>
       </div>
       <div>
-        <h3 className="song-title">Nude - Aurora Borealis</h3>
+        <h3 className="song-title">Svante Berg - Melting</h3>
       </div>
       <div>
         <h3 className="song-title">
