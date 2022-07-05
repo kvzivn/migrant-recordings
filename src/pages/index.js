@@ -27,7 +27,6 @@ const IndexPage = () => {
 
   const [page, setPage] = useState(null)
   const [isPlaying, setIsPlaying] = useState(false)
-  const [slide, setSlide] = useState(0)
 
   const audioRefs = [
     audioRef1,
@@ -42,24 +41,16 @@ const IndexPage = () => {
     setPage(pageId)
 
     if (pageId === "listen" && isPlaying) {
-      console.log("STOP PLAYING")
       setIsPlaying(false)
-
       audioRefs.forEach((ref) => ref.current.pause())
-
       logoRef.current.style.transition = "transform 1s ease-in-out 1s"
       logoRef.current.style.transform = "translate(-50%, 0)"
 
       textRef.current.style.transition = "opacity 1s ease-in-out"
       textRef.current.style.opacity = 0
     } else if (pageId === "listen") {
-      console.log("LISTEN")
       setIsPlaying(true)
       audioRefs[0].current.play()
-      audioRefs[0].current.onended = () => {
-        console.log("ENDED?")
-        setSlide(1)
-      }
       logoRef.current.style.transition = "transform 1s ease-in-out"
       logoRef.current.style.transform = "translate(-50%, 12rem)"
 
@@ -74,19 +65,12 @@ const IndexPage = () => {
     }
   }
 
-  const changeSong = (index) => {
-    if (index > audioRefs.length) return
-
+  const changeSong = (slide) => {
     audioRefs.forEach((ref) => {
       ref.current.pause()
       ref.current.currentTime = 0
     })
-
-    audioRefs[index].current.play()
-    audioRefs[index].current.onended = () => {
-      if (index === 5) return
-      setSlide(index + 1)
-    }
+    audioRefs[slide].current.play()
   }
 
   const Slider = () => (
@@ -96,11 +80,7 @@ const IndexPage = () => {
         transition: "opacity 1s ease-in-out",
       }}
     >
-      <AudioSlider
-        changeSong={changeSong}
-        slide={slide}
-        isPlaying={isPlaying}
-      />
+      <AudioSlider changeSong={changeSong} />
     </div>
   )
 

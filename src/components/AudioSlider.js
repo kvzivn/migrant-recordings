@@ -1,11 +1,10 @@
 /** @jsx jsx */
-import { createRef } from "react"
+import React from "react"
 import Slider from "react-slick"
 import { jsx } from "theme-ui"
 
 import "../styles/slick.css"
 import "../styles/slick-theme.css"
-import { useEffect } from "react"
 
 const Next = ({ onClick }) => (
   <button
@@ -27,7 +26,7 @@ const Next = ({ onClick }) => (
       viewBox="0 0 60 218"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      sx={{ width: "20%", height: "100%" }}
+      sx={{ width: "25%", height: "100%" }}
     >
       <path
         d="M59.1224 107.226C59.6757 108.344 59.6757 109.656 59.1224 110.774L7.58539 214.916C5.70933 218.707 0.000359058 217.372 0.000359058 213.142L0.000359058 4.85782C0.000359058 0.628002 5.70933 -0.707319 7.58539 3.08369L59.1224 107.226Z"
@@ -61,7 +60,7 @@ const Prev = ({ onClick }) => (
       viewBox="0 0 60 218"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      sx={{ width: "20%", height: "100%" }}
+      sx={{ width: "25%", height: "100%" }}
     >
       <path
         d="M0.877969 110.774C0.324679 109.656 0.324677 108.344 0.877967 107.226L52.415 3.08371C54.291 -0.707297 60 0.628023 60 4.85784L60 213.142C60 217.372 54.291 218.707 52.415 214.916L0.877969 110.774Z"
@@ -75,9 +74,7 @@ const Prev = ({ onClick }) => (
   </button>
 )
 
-const AudioSlider = ({ changeSong, slide, isPlaying }) => {
-  const sliderRef = createRef()
-
+const AudioSlider = ({ changeSong }) => {
   const settings = {
     dots: true,
     infinite: true,
@@ -91,14 +88,8 @@ const AudioSlider = ({ changeSong, slide, isPlaying }) => {
     },
   }
 
-  useEffect(() => {
-    if (!isPlaying) return
-    changeSong(slide)
-    sliderRef.current.slickGoTo(slide)
-  }, [slide, isPlaying])
-
   return (
-    <Slider ref={sliderRef} {...settings}>
+    <Slider {...settings}>
       <div>
         <h3 className="song-title">Intro</h3>
       </div>
