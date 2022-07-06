@@ -6,12 +6,12 @@ import "../styles/styles.css"
 import Layout from "../components/layout"
 import AudioSlider from "../components/AudioSlider"
 import Logo from "../images/logo2.svg"
-import Audio1 from "../audio/audio-1.flac"
-import Audio2 from "../audio/audio-2.flac"
-import Audio3 from "../audio/audio-3.flac"
-import Audio4 from "../audio/audio-4.flac"
-import Audio5 from "../audio/audio-5.flac"
-import Audio6 from "../audio/audio-6.flac"
+import Audio1 from "../audio/audio-1.mp3"
+import Audio2 from "../audio/audio-2.mp3"
+import Audio3 from "../audio/audio-3.mp3"
+import Audio4 from "../audio/audio-4.mp3"
+import Audio5 from "../audio/audio-5.mp3"
+import Audio6 from "../audio/audio-6.mp3"
 
 const IndexPage = () => {
   const logoRef = createRef(null)
