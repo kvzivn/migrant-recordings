@@ -146,27 +146,27 @@ const IndexPage = () => {
   return (
     <Layout>
       <audio ref={audioRef1}>
-        <source src={Audio1} type="audio/flac" />
+        <source src={Audio1} type="audio/mp3" />
       </audio>
 
       <audio ref={audioRef2}>
-        <source src={Audio2} type="audio/flac" />
+        <source src={Audio2} type="audio/mp3" />
       </audio>
 
       <audio ref={audioRef3}>
-        <source src={Audio3} type="audio/flac" />
+        <source src={Audio3} type="audio/mp3" />
       </audio>
 
       <audio ref={audioRef4}>
-        <source src={Audio4} type="audio/flac" />
+        <source src={Audio4} type="audio/mp3" />
       </audio>
 
       <audio ref={audioRef5}>
-        <source src={Audio5} type="audio/flac" />
+        <source src={Audio5} type="audio/mp3" />
       </audio>
 
       <audio ref={audioRef6}>
-        <source src={Audio6} type="audio/flac" />
+        <source src={Audio6} type="audio/mp3" />
       </audio>
 
       <main
